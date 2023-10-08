@@ -96,3 +96,12 @@ void inOrden(arbol *arb)
         inOrden(arb->h_der);
     }
 }
+void postOrden(arbol *arb)
+{
+    if (arb != NULL)
+    {
+        postOrden(arb->h_izq);
+        postOrden(arb->h_der);
+        printf("%d\n", arb->dato);
+    }
+}
