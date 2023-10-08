@@ -19,3 +19,19 @@ void inserta(arbol **A, int x)
             inserta(&((*A)->h_der), x);
     }
 }
+int suprime_min(arbol **A)
+{
+    int v_ref;
+    if ((*A)->h_izq == NULL)
+    {
+        v_ref = (*A)->dato;
+        arbol *tmp = *A;
+        *A = (*A)->h_der;
+        free(tmp);
+        return v_ref;
+    }
+    else
+    {
+        return suprime_min(&((*A)->h_izq));
+    }
+}
