@@ -35,3 +35,35 @@ int suprime_min(arbol **A)
         return suprime_min(&((*A)->h_izq));
     }
 }
+void suprime(arbol **A, int x)
+{
+    if (*A != NULL)
+    {
+        if (x < (*A)->dato)
+            suprime(&((*A)->h_izq), x);
+        else if (x > (*A)->dato)
+            suprime(&((*A)->h_der), x);
+        else if ((*A)->h_izq == NULL && (*A)->h_der == NULL)
+        {
+            arbol *tmp = *A;
+            *A = NULL;
+            free(tmp);
+        }
+        else if ((*A)->h_izq == NULL)
+        {
+            arbol *tmp = *A;
+            *A = (*A)->h_der;
+            free(tmp);
+        }
+        else if ((*A)->h_der == NULL)
+        {
+            arbol *tmp = *A;
+            *A = (*A)->h_izq;
+            free(tmp);
+        }
+        else
+        {
+            (*A)->dato = suprime_min(&((*A)->h_der));
+        }
+    }
+}
