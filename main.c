@@ -105,3 +105,53 @@ void postOrden(arbol *arb)
         printf("%d\n", arb->dato);
     }
 }
+int main()
+{
+    arbol *raiz;
+    raiz = NULL;
+    int opcion, a, b;
+    do
+    {
+        printf("Menu\n");
+        printf("1) Agregar un elemento\n");
+        printf("2) Eliminar un elemento\n");
+        printf("3) Mostrar por Pre-Orden\n");
+        printf("4) Mostrar por Post-Orden\n");
+        printf("5) Mostrar por In-Orden\n");
+        scanf("%d", &opcion);
+        switch (opcion)
+        {
+        case 1:
+            printf("Ingrese un elemento\n");
+            scanf("%d", &a);
+            inserta(&raiz, a);
+            if (es_miembro(raiz, a) == 1)
+            {
+                printf("El elemento buscado existe en el arbol\n");
+            }
+            else
+            {
+                printf("No existe\n");
+            }
+            break;
+        case 2:
+            printf("Ingrese un elemento para eliminar\n");
+            scanf("%d", &a);
+            suprime(&raiz, a);
+            break;
+        case 3:
+            printf("Pre-Orden:\n");
+            preOrden(raiz);
+            break;
+        case 4:
+            printf("PostOrden: \n");
+            postOrden(raiz);
+            break;
+        case 5:
+            printf("InOrden: \n");
+            inOrden(raiz);
+            break;
+        }
+    } while (opcion != 0);
+    return 0;
+}
