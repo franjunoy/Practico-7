@@ -87,3 +87,12 @@ void preOrden(arbol *arb)
         preOrden(arb->h_der);
     }
 }
+void inOrden(arbol *arb)
+{
+    if (arb != NULL)
+    {
+        inOrden(arb->h_izq);
+        printf("%d\n", arb->dato);
+        inOrden(arb->h_der);
+    }
+}
