@@ -67,3 +67,14 @@ void suprime(arbol **A, int x)
         }
     }
 }
+int es_miembro(arbol *A, int x)
+{
+    if (A == NULL)
+        return -1;
+    else if (A->dato == x)
+        return 1;
+    else if (A->dato > x)
+        return es_miembro(A->h_izq, x);
+    else
+        return es_miembro(A->h_der, x);
+}
