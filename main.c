@@ -78,3 +78,12 @@ int es_miembro(arbol *A, int x)
     else
         return es_miembro(A->h_der, x);
 }
+void preOrden(arbol *arb)
+{
+    if (arb != NULL)
+    {
+        printf("%d\n", arb->dato);
+        preOrden(arb->h_izq);
+        preOrden(arb->h_der);
+    }
+}
